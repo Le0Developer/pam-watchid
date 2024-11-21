@@ -29,3 +29,9 @@ jobs:
     - name: Build
       run: make enable
 
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: bin-${{ matrix.version }}-${{ matrix.xcode-select }}-${{ github.run_number }}
+        path: "*.so"
+        if-no-files-found: error
